@@ -1,9 +1,6 @@
 #include <iostream>
 #include <cstdlib>
 #include "rtmidi/RtMidi.h"
-// #include <chrono>
-
-// using namespace std::chrono;
 
 std::string controllerName = "LPD8 20:0";
 std::string outputPortName = "Midi Through 14:0";
@@ -24,8 +21,6 @@ uint8_t ccStartNum = 20;
 bool isFirstButtonPressed = false;
 bool isSecndButtonPressed = false;
 bool isPageCH = false;
-// high_resolution_clock::time_point t1 = high_resolution_clock::now();
-// high_resolution_clock::time_point t2 = high_resolution_clock::now();
 
 RtMidiIn *midiin = 0;
 RtMidiOut *midiout = 0;
@@ -346,16 +341,7 @@ cleanup:
 
 bool chooseMidiOut(RtMidiOut *rtmidi) //choose output for controller display
 {
-    // std::cout << "\nWould you like to open a virtual input port? [y/N] ";
-
-     std::string keyHit;
-    // std::getline(std::cin, keyHit);
-    // if (keyHit == "y")
-    // {
-    //     rtmidi->openVirtualPort();
-    //     controllerName = rtmidi->getPortName(i);
-    //     return true;
-    // }
+    std::string keyHit;
 
     std::string portName;
     unsigned int i = 0, nPorts = rtmidi->getPortCount();
@@ -428,16 +414,6 @@ bool chooseMidiOut2(RtMidiOut *rtmidi) //choose where to output CCs
 
 bool chooseMidiIn(RtMidiIn *rtmidi)
 {
-    /*    std::cout << "\nWould you like to open a virtual input port? [y/N] ";
-
-    std::string keyHit;
-    std::getline(std::cin, keyHit);
-    if (keyHit == "y")
-    {
-        rtmidi->openVirtualPort();
-        return true;
-    }
-*/
     std::string portName;
     unsigned int i = 0, nPorts = rtmidi->getPortCount();
     if (nPorts == 0)
@@ -457,98 +433,6 @@ bool chooseMidiIn(RtMidiIn *rtmidi)
                 return true;
             }
         }
-    //rtmidi->openPort(i);
 
     return false;
 }
-
-/*bool chooseMidiOut(RtMidiOut *rtmidi)
-{
-    std::string portName;
-    unsigned int i = 0, nPorts = rtmidi->getPortCount();
-    if (nPorts == 0)
-    {
-        std::cout << "No output ports available!" << std::endl;
-        return false;
-    }
-
-    if (nPorts == 1)
-    {
-        std::cout << "\nOpening " << rtmidi->getPortName() << std::endl;
-    }
-    else
-    {
-        for (i = 0; i < nPorts; i++)
-        {
-            portName = rtmidi->getPortName(i);
-            std::cout << "  output port #" << i << ": " << portName << '\n';
-            if (portName == controllerName)
-            {
-                rtmidi->openPort(i);
-                std::cout << "  assigned out port #" << i << ": " << portName << '\n';
-            }
-        }
-    }
-    return true;
-}
-
-bool chooseMidiOut2(RtMidiOut *rtmidi)
-{
-    std::string portName;
-    unsigned int i = 0, nPorts = rtmidi->getPortCount();
-    if (nPorts == 0)
-    {
-        std::cout << "No output ports available!" << std::endl;
-        return false;
-    }
-
-    if (nPorts == 1)
-    {
-        std::cout << "\nOpening " << rtmidi->getPortName() << std::endl;
-    }
-    else
-    {
-        for (i = 0; i < nPorts; i++)
-        {
-            portName = rtmidi->getPortName(i);
-            std::cout << "  output port #" << i << ": " << portName << '\n';
-            if (portName == outputPortName)
-            {
-                rtmidi->openPort(i);
-                std::cout << "  assigned out port #" << i << ": " << portName << '\n';
-            }
-        }
-    }
-    return true;
-}
-
-bool chooseMidiIn(RtMidiIn *rtmidi)
-{
-    std::string portName;
-    unsigned int i = 0, nPorts = rtmidi->getPortCount();
-    if (nPorts == 0)
-    {
-        std::cout << "No input ports available!" << std::endl;
-        return false;
-    }
-
-    if (nPorts == 1)
-    {
-        std::cout << "\nOpening " << rtmidi->getPortName() << std::endl;
-    }
-    else
-    {
-        for (i = 0; i < nPorts; i++)
-        {
-            portName = rtmidi->getPortName(i);
-            std::cout << "  Input port #" << i << ": " << portName << '\n';
-            if (portName == controllerName)
-            {
-                rtmidi->openPort(i);
-                std::cout << "  assigned in port #" << i << ": " << portName << '\n';
-            }
-        }
-    }
-    return true;
-}
-*/
