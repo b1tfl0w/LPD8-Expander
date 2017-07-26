@@ -1,0 +1,10 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "0.1.0",
+    "command": "g++",
+    "isShellCommand": true,
+    "args": ["-no-pie", "-g","-O0","-Wall", "-D__LINUX_ALSA__", "-I", ".", "-L./rtmidi/.libs", "main.cpp","-o","LPD8-Expander","-lrtmidi","-Wl,-rpath=./rtmidi/.libs"],
+    //"args": ["-g","-O0","-Wall", "-D__LINUX_ALSA__", "-I", ".", "-L./rtmidi/.libs", "main.cpp","-o","LPD8-Expander","-lrtmidi","-Wl,-rpath=./rtmidi/.libs"],
+    "showOutput": "always"
+}
