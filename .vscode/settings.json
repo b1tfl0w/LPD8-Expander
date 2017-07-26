@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "system_error": "cpp",
-        "chrono": "cpp",
-        "iostream": "cpp",
-        "streambuf": "cpp"
-    }
-}
