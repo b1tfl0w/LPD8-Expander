@@ -60,7 +60,7 @@ void drawLPD8intrfc()
 {
     for (unsigned int i = 0; i <= 7; i++)
     {
-        message[0] = 191; //canale midi 16 !!!
+        message[0] = 191;
         message[1] = buttonCC[i];
         message[2] = LPD8Display[i];
         midiout->sendMessage(&message);
@@ -71,7 +71,7 @@ void drawLPD8intrfcCH()
 {
     for (unsigned int i = 0; i <= 7; i++)
     {
-        message[0] = 191; //canale midi 16 !!!
+        message[0] = 191;
         message[1] = buttonCC[i];
         message[2] = LPD8DisplayCH[i];
         midiout->sendMessage(&message);
@@ -205,9 +205,6 @@ void fillCCMemValues(uint8_t ccNum, uint8_t ccValue)
 
 void mycallback(double deltatime, std::vector<unsigned char> *message, void * /*userData*/)
 {
-    /*    if (message->size() > 10)
-        return;
-*/
     unsigned int nBytes = message->size();
     for (unsigned int i = 0; i < nBytes; i++)
         std::cout << "Byte " << i << " = " << (int)message->at(i) << ", ";
@@ -277,7 +274,7 @@ void setupMidi()//called by main.cpp
     try
     {
 
-        // RtMidiIn constructor
+        // RtMidiOut constructor
         midiout = new RtMidiOut();
 
         // Call function to select port.
@@ -291,7 +288,7 @@ void setupMidi()//called by main.cpp
     try
     {
 
-        // RtMidiIn constructor
+        // RtMidiOut constructor
         midiout2 = new RtMidiOut();
 
         // Call function to select port.
