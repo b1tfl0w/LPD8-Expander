@@ -1,5 +1,7 @@
 # LPD8-Expander
-An application for expanding the number of the Akai LPD8 controllers from 32 to 2048.
+An application I've made for expanding the number of my Akai LPD8 controller from 32 to 2048, 128 CCs x 16 midi channels)
+
+It works with any controller that has 8 buttons and 8 knobs.
 
 Uses RtMidi library https://github.com/thestk/rtmidi
 
